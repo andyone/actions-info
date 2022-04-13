@@ -24,7 +24,7 @@ jobs:
         run: getent group
 
       - name: List /etc
-        run: ls -lah /etc
+        run: ls -lah /etc/
 
   macOS:
     name: macOS
@@ -38,4 +38,4 @@ jobs:
         run: dscl . list /Groups
 
       - name: List /etc
-        run: ls -lah /etc
+        run: ls -lah /etc/
