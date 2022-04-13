@@ -1,4 +1,4 @@
-name: Basic
+name: RunnerInfo
 
 on:
   push:
@@ -12,8 +12,8 @@ on:
         options: [yes, no]
 
 jobs:
-  Basic:
-    name: Basic
+  Ubuntu:
+    name: Ubuntu
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,21 @@ jobs:
 
       - name: List groups
         run: getent group
+
+      - name: List /etc
+        run: ls -lah /etc
+
+jobs:
+  macOS:
+    name: macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: List users
+        run: dscl . list /Users
+
+      - name: List users
+        run: dscl . list /Groups
 
       - name: List /etc
         run: ls -lah /etc
