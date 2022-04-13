@@ -26,7 +26,6 @@ jobs:
       - name: List /etc
         run: ls -lah /etc
 
-jobs:
   macOS:
     name: macOS
     runs-on: macos-latest
