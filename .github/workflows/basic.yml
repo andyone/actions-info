@@ -34,7 +34,7 @@ jobs:
       - name: List users
         run: dscl . list /Users
 
-      - name: List users
+      - name: List groups
         run: dscl . list /Groups
 
       - name: List /etc
