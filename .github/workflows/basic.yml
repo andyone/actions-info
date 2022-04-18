@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Current user info
+        run: id
+    
       - name: List users
         run: getent passwd
 
@@ -31,6 +34,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Current user info
+        run: id
+    
       - name: List users
         run: dscl . list /Users
 
