@@ -26,6 +26,9 @@ jobs:
       - name: List groups
         run: getent group
 
+      - name: Print environment variables
+        run: printenv
+
       - name: List /etc
         run: ls -lah /etc/
 
@@ -42,6 +45,9 @@ jobs:
 
       - name: List groups
         run: dscl . list /Groups
+        
+      - name: Print environment variables
+        run: printenv
 
       - name: List /etc
         run: ls -lah /etc/
