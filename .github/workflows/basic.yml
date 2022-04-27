@@ -31,7 +31,7 @@ jobs:
 
       - name: List directories
         run: |
-          test
+          # test
           echo "::group::List /etc"
           ls -lah /etc/
           echo "::endgroup::"
