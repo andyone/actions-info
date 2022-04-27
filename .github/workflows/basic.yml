@@ -25,17 +25,17 @@ jobs:
 
       - name: List groups
         run: |
-          printf "%s" "::group::List groups"
+          printf "%s\n" "::group::List groups"
           getent group
           echo "::endgroup::"
 
       - name: List directories
         run: |
           # test
-          echo "::group::\e[1mList /etc\e[0m"
+          echo -e "::group::\e[1mList /etc\e[0m"
           ls -lah /etc/
           echo "::endgroup::"
-          echo "::group::\e[1mList home\e[0m"
+          echo -e "::group::\e[1mList home\e[0m"
           ls -lah $HOME
           echo "::endgroup::"
 
