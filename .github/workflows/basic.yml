@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: List users
         run: |
-          echo "::error ::Cant read file"
+          echo "::error file=asdasdadsas/sss:asss::Cant read file"
           getent passwd
 
       - name: List groups
