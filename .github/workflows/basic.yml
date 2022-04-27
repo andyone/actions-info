@@ -31,7 +31,7 @@ jobs:
 
       - name: List directories
         run: |
-          # \e[34mtest\e[0m
+          # \033[34mtest\033[0m
           echo -e "::group::\e[34mList /etc\e[0m"
           ls -lah /etc/
           echo "::endgroup::"
