@@ -19,25 +19,14 @@ jobs:
     steps:
       - name: List users
         run: |
-          echo "::group::List users"
+          echo "::error ::Cant read file"
           getent passwd
-          echo "::endgroup::"
 
       - name: List groups
-        run: |
-          printf "%s\n" "::group::List groups"
-          getent group
-          echo "::endgroup::"
+        run: getent group
 
-      - name: List directories
-        run: |
-          # \033[34mtest\033[0m
-          echo -e "::group::\e[34mList /etc\e[0m"
-          ls -lah /etc/
-          echo "::endgroup::"
-          echo -e "::group::\e[34mList home\e[0m"
-          ls -lah $HOME
-          echo "::endgroup::"
+      - name: List /etc
+        run: ls -lah /etc/
 
   macOS:
     name: macOS
