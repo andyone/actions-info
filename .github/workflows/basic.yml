@@ -31,12 +31,16 @@ jobs:
 
       - name: List directories
         run: |
-          echo "::group::List /etc"
-          ls -lah /etc/
-          echo "::endgroup::"
-          echo "::group::List home"
-          ls -lah $HOME
-          echo "::endgroup::"
+          main() {
+            echo "::group::List /etc"
+            ls -lah /etc/
+            echo "::endgroup::"
+            echo "::group::List home"
+            ls -lah $HOME
+            echo "::endgroup::"
+          }
+
+          main
 
   macOS:
     name: macOS
