@@ -32,10 +32,10 @@ jobs:
       - name: List directories
         run: |
           # test
-          echo -e "::group::\e[1mList /etc\e[0m"
+          echo -e "::group::\e[104mList /etc\e[0m"
           ls -lah /etc/
           echo "::endgroup::"
-          echo -e "::group::\e[1mList home\e[0m"
+          echo -e "::group::\e[104mList home\e[0m"
           ls -lah $HOME
           echo "::endgroup::"
 
