@@ -18,13 +18,25 @@ jobs:
 
     steps:
       - name: List users
-        run: getent passwd
+        run: |
+          echo "::group::List users"
+          getent passwd
+          echo "::endgroup::"
 
       - name: List groups
-        run: getent group
+        run: |
+          echo "::group::List groups"
+          getent group
+          echo "::endgroup::"
 
-      - name: List /etc
-        run: ls -lah /etc/
+      - name: List directories
+        run: |
+          echo "::group::List /etc"
+          ls -lah /etc/
+          echo "::endgroup::"
+          echo "::group::List home"
+          ls -lah $HOME
+          echo "::endgroup::"
 
   macOS:
     name: macOS
