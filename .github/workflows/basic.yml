@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Print info
         run: |
-          echo -e "\e[34mSending coverage data…\e[0m"
+          echo -e "\033[34mSending coverage data…\033[0m"
 
       - name: List users
         run: getent passwd
@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Print info
         run: |
-          echo -e "\e[34mSending coverage data…\e[0m"
+          echo -e "\033[34mSending coverage data…\033[0m"
 
       - name: List users
         run: dscl . list /Users
