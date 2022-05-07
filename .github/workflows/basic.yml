@@ -17,10 +17,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print info
-        run: |
-          echo -e "\033[34mSending coverage data…\033[0m"
-
       - name: List users
         run: getent passwd
 
@@ -30,15 +26,14 @@ jobs:
       - name: List /etc
         run: ls -lah /etc/
 
+      - name: List environment variables
+        run: printenv
+
   macOS:
     name: macOS
     runs-on: macos-latest
 
     steps:
-      - name: Print info
-        run: |
-          echo -e "\033[34mSending coverage data…\033[0m"
-
       - name: List users
         run: dscl . list /Users
 
@@ -47,3 +42,6 @@ jobs:
 
       - name: List /etc
         run: ls -lah /etc/
+
+      - name: List environment variables
+        run: printenv
