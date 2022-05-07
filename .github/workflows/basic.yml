@@ -45,3 +45,15 @@ jobs:
 
       - name: List environment variables
         run: printenv | sort -h
+
+  tests:
+    name: Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: PERFE
+        run: |
+          wget https://apps.kaos.st/perfecto/4.0.0/linux/x86_64/perfecto
+          chmod +x perfecto
+          wget https://raw.githubusercontent.com/essentialkaos/perfecto/master/testdata/test_15.spec
+          ./perfecto test_15.spec
