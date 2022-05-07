@@ -27,7 +27,7 @@ jobs:
         run: ls -lah /etc/
 
       - name: List environment variables
-        run: printenv
+        run: printenv | sort -h
 
   macOS:
     name: macOS
@@ -44,4 +44,4 @@ jobs:
         run: ls -lah /etc/
 
       - name: List environment variables
-        run: printenv
+        run: printenv | sort -h
