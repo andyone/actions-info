@@ -1,0 +1,26 @@
+name: RunnerInfo
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  CreateRepoC:
+    name: CreateRepoC
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install build dependencies
+        run: |
+          sudo apt install -y libcurl4-openssl-dev \
+                              libbz2-dev libxml2-dev \
+                              libssl-dev zlib1g-dev \
+                              pkg-config \
+                              libglib2.0-dev \
+                              liblzma-dev \
+                              libsqlite0-dev \
+                              libsqlite3-dev \
+                              librpm-dev \
+                              libzstd-dev \
+                              python3.9-dev \
+                              cmake

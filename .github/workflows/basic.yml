@@ -29,9 +29,6 @@ jobs:
       - name: List environment variables
         run: printenv | sort -h
 
-      - name: Install createrepo_c
-        run: sudo apt-get install -y createrepo_c
-
   macOS:
     name: macOS
     runs-on: macos-latest
