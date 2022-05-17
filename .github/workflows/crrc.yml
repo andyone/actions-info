@@ -1,4 +1,4 @@
-name: RunnerInfo
+name: CreateRepo
 
 on:
   push:
@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Install build dependencies
         run: |
+          sudo apt-get update
           sudo apt install -y libcurl4-openssl-dev \
                               libbz2-dev libxml2-dev \
                               libssl-dev zlib1g-dev \
