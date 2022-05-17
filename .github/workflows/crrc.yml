@@ -4,6 +4,10 @@ on:
   push:
     branches: [master]
 
+env:
+  REPOSITORY: rpm-software-management/createrepo_c
+  VERSION: 0.15.11
+
 jobs:
   CreateRepoC:
     name: CreateRepoC
@@ -25,3 +29,19 @@ jobs:
                               libzstd-dev \
                               python3.9-dev \
                               cmake
+
+      - name: Build createrepo_c binary
+        run: |
+          git clone --depth=1 --branch=${{env.VERSION}} \
+                    https://github.com/${{env.REPOSITORY}}.git createrepo_c
+
+          cd createrepo_c
+          mkdir build
+          cd build
+          
+          cmake .. -DWITH_ZCHUNK=NO -DWITH_LIBMODULEMD=NO
+          make -j 1
+
+          mkdir -p ~/.cache
+
+          cp src/createrepo_c ~/.cache/
