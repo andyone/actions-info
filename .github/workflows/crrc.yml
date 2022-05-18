@@ -5,16 +5,24 @@ on:
     branches: [master]
 
 env:
-  REPOSITORY: rpm-software-management/createrepo_c
-  VERSION: 0.15.11
+  CR_REPO: rpm-software-management/createrepo_c
+  CR_VERSION: 0.15.11
 
 jobs:
-  CreateRepoC:
-    name: CreateRepoC
+  CreateRepoBuild:
+    name: CreateRepoBuild
     runs-on: ubuntu-latest
 
     steps:
+      - name: Cache createrepo_c binary
+        uses: actions/cache@v3
+        id: createrepo-bin-cache
+        with:
+          path: ~/.cache/bin/createrepo_c
+          key: ${{runner.os}}-ek-rep-createrepoc-${{env.CR_VERSION}}
+
       - name: Install build dependencies
+        if: steps.createrepo-bin-cache.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update
           sudo apt install -y libcurl4-openssl-dev \
@@ -31,9 +39,10 @@ jobs:
                               cmake
 
       - name: Build createrepo_c binary
+        if: steps.createrepo-bin-cache.outputs.cache-hit != 'true'
         run: |
-          git clone --depth=1 --branch=${{env.VERSION}} \
-                    https://github.com/${{env.REPOSITORY}}.git createrepo_c
+          git clone --depth=1 --branch="${{env.CR_VERSION}}" \
+                    "https://github.com/${{env.CR_REPO}}.git" createrepo_c
 
           cd createrepo_c
           mkdir build
@@ -42,6 +51,12 @@ jobs:
           cmake .. -DWITH_ZCHUNK=NO -DWITH_LIBMODULEMD=NO -DENABLE_DRPM=OFF
           make -j 1
 
-          mkdir -p ~/.cache
+          mkdir -p ~/.cache/bin/
 
-          cp src/createrepo_c ~/.cache/
+          cp src/createrepo_c "$HOME/.cache/bin/"
+
+      - name: Update PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Print createrepo_c version info
+        run: createrepo_c --version
