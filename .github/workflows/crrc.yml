@@ -3,10 +3,18 @@ name: CreateRepo
 on:
   push:
     branches: [master]
-
-env:
-  CR_REPO: rpm-software-management/createrepo_c
-  CR_VERSION: 0.15.11
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'createrepo_c version'
+        type: string
+        required: false
+        default: 0.15.11
+      repo:
+        description: 'createrepo_c repository'
+        type: string
+        required: false
+        default: rpm-software-management/createrepo_c
 
 jobs:
   CreateRepoBuild:
@@ -41,8 +49,8 @@ jobs:
       - name: Build createrepo_c binary
         if: steps.createrepo-bin-cache.outputs.cache-hit != 'true'
         run: |
-          git clone --depth=1 --branch="${{env.CR_VERSION}}" \
-                    "https://github.com/${{env.CR_REPO}}.git" createrepo_c
+          git clone --depth=1 --branch="${{github.event.inputs.version}}" \
+                    "https://github.com/${{github.event.inputs.repo}}.git" createrepo_c
 
           cd createrepo_c
           mkdir build
