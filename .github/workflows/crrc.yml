@@ -56,7 +56,7 @@ jobs:
           cp src/createrepo_c "$HOME/.cache/bin/"
 
       - name: Update PATH
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+        run: echo "$HOME/.cache/bin" >> $GITHUB_PATH
 
       - name: Print createrepo_c version info
         run: createrepo_c --version
