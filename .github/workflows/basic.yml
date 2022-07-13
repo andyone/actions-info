@@ -42,6 +42,9 @@ jobs:
 
       - name: List /etc
         run: ls -lah /etc/
+        
+      - name: List /var
+        run: ls -lah /var/
 
       - name: List environment variables
         run: printenv | sort -h
