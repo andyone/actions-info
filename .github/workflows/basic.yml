@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print system arch
-        run: uname -m
+      - name: Print system info
+        run: cat /etc/os-release
 
       - name: List users
         run: getent passwd
@@ -37,8 +37,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Print system arch
-        run: uname -m
+      - name: Print system info
+        run: sw_vers
 
       - name: List users
         run: dscl . list /Users
