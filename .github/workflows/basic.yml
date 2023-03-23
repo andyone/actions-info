@@ -12,6 +12,16 @@ on:
         options: [yes, no]
 
 jobs:
+  Context:
+    name: Context
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(context)
+  
   Ubuntu:
     name: Ubuntu
     runs-on: ubuntu-latest
