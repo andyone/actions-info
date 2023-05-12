@@ -33,7 +33,7 @@ jobs:
       - name: Run code
         run: |
           docker run --rm "ghcr.io/essentialkaos/perfecto:micro" --version
-          wget https://raw.githubusercontent.com/essentialkaos/perfecto/master/perfecto-container
+          wget https://raw.githubusercontent.com/essentialkaos/perfecto/develop/perfecto-container
           wget https://raw.githubusercontent.com/essentialkaos/kaos-repo/develop/specs/etcd.spec
           chmod +x perfecto-container
           ./perfecto-container -f github etcd.spec
