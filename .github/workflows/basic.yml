@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Exec
         run: |
-          wget -O perfecto-container https://raw.githubusercontent.com/essentialkaos/perfecto/master/perfecto-container
+          wget -O perfecto-container https://raw.githubusercontent.com/essentialkaos/perfecto/develop/perfecto-container
           wget https://raw.githubusercontent.com/essentialkaos/kaos-repo/develop/specs/etcd.spec
           chmod +x perfecto-container
           export IMAGE="ghcr.io/essentialkaos/perfecto:micro"
