@@ -22,42 +22,15 @@ jobs:
         with:
           script: console.log(context)
   
-  Ubuntu:
+  Perfecto:
     name: Ubuntu
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print system info
-        run: cat /etc/os-release
-
-      - name: List users
-        run: getent passwd
-
-      - name: List groups
-        run: getent group
-
-      - name: List /etc
-        run: ls -lah /etc/
-
-      - name: List environment variables
-        run: printenv | sort -h
-
-  macOS:
-    name: macOS
-    runs-on: macos-latest
-
-    steps:
-      - name: Print system info
-        run: sw_vers
-
-      - name: List users
-        run: dscl . list /Users
-
-      - name: List groups
-        run: dscl . list /Groups
-
-      - name: List /etc
-        run: ls -lah /etc/
-        
-      - name: List environment variables
-        run: printenv | sort -h
+      - name: Run code
+        run: |
+          docker run --rm "ghcr.io/essentialkaos/perfecto:micro" --version
+          wget https://raw.githubusercontent.com/essentialkaos/perfecto/master/perfecto-container
+          wget https://raw.githubusercontent.com/essentialkaos/kaos-repo/develop/specs/etcd.spec
+          chmod +x perfecto-container
+          ./perfecto-container -f github etcd.spec
