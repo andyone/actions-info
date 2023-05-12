@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Run code
         run: |
+          docker version
+          podman version
           docker run --rm "ghcr.io/essentialkaos/perfecto:micro" --version
           wget https://raw.githubusercontent.com/essentialkaos/perfecto/develop/perfecto-container
           wget https://raw.githubusercontent.com/essentialkaos/kaos-repo/develop/specs/etcd.spec
