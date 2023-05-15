@@ -27,11 +27,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Exec
-        run: |
-          wget -O perfecto-container https://raw.githubusercontent.com/essentialkaos/perfecto/develop/perfecto-container
-          wget https://raw.githubusercontent.com/essentialkaos/kaos-repo/develop/specs/etcd.spec
-          chmod +x perfecto-container
-          export IMAGE="ghcr.io/essentialkaos/perfecto:micro"
-          export ENGINE=""
-          ./perfecto-container -f github etcd.spec
+      - name: Print system info
+        run: cat /etc/os-release
+
+      - name: List users
+        run: getent passwd
+
+      - name: List groups
+        run: getent group
+
+      - name: List /etc
+        run: ls -lah /etc/
+
+      - name: List environment variables
+        run: printenv | sort -h
+
+  macOS:
+    name: macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Print system info
+        run: sw_vers
+
+      - name: List users
+        run: dscl . list /Users
+
+      - name: List groups
+        run: dscl . list /Groups
+
+      - name: List /etc
+        run: ls -lah /etc/
+        
+      - name: List environment variables
+        run: printenv | sort -h
