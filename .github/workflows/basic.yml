@@ -21,6 +21,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: console.log(context)
+
+      - name: View github context
+        run: echo "${{ toJson(github) }}"
   
   Ubuntu:
     name: Ubuntu
@@ -41,9 +44,6 @@ jobs:
 
       - name: List environment variables
         run: printenv | sort -h
-
-      - name: Github context
-        run: echo "${{ toJson(github) }}"
 
   macOS:
     name: macOS
