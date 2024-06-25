@@ -42,6 +42,9 @@ jobs:
       - name: List environment variables
         run: printenv | sort -h
 
+      - name: Github context
+        run: echo "${{ toJson(github) }}"
+
   macOS:
     name: macOS
     runs-on: macos-latest
