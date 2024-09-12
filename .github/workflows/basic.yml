@@ -45,6 +45,9 @@ jobs:
       - name: List environment variables
         run: printenv | sort -h
 
+      - name: List kernel parameters
+        run: sysctl -a 2>/dev/null
+
   macOS:
     name: macOS
     runs-on: macos-latest
@@ -67,3 +70,6 @@ jobs:
 
       - name: List services
         run: launchctl list
+
+      - name: List kernel parameters
+        run: sysctl -a 2>/dev/null
