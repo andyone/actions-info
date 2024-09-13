@@ -73,3 +73,6 @@ jobs:
 
       - name: List kernel parameters
         run: sysctl -a 2>/dev/null
+
+      - name: Print meminfo
+        run: vm_stat
