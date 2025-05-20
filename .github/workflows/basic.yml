@@ -74,5 +74,8 @@ jobs:
       - name: List kernel parameters
         run: sysctl -a 2>/dev/null
 
+      - name: Show unique system ID
+        run: ioreg -rd1 -c IOPlatformExpertDevice
+
       - name: Print meminfo
         run: vm_stat
